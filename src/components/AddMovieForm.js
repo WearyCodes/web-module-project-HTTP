@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
 import axios from 'axios';
 
 // - [ ] We need to be able to load in the current movie's attributes into our local form state.
 //  When `EditMovieForm` mount, retrieve our current id's movie from the api and save the data returned to local state.
 
-const EditMovieForm = (props) => {
+const AddMovieForm = (props) => {
   const navigate = useNavigate();
-  const {id} = useParams()
 
-
-
-
-  console.log('current id', id)
   const { setMovies } = props;
   const [movie, setMovie] = useState({
     title: "",
@@ -24,19 +18,6 @@ const EditMovieForm = (props) => {
     description: ""
   });
 
-  //Get Post Endpoint
-// api.get('/api/movies/:id',(req, res) => {
-//   res.json(Data.getById(req.params.id))
-// })
-
-    useEffect(() => {
-      axios.get(`http://localhost:9000/api/movies/${id}`)
-      .then(res => {console.log(res)
-      setMovie(res.data)
-      })
-      .catch(err => console.log(err))
-  }, [])
-
   const handleChange = (e) => {
     setMovie({
       ...movie,
@@ -45,13 +26,10 @@ const EditMovieForm = (props) => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Make your put request here
-    // On success, set the updated movies in state
-    // and also navigate the app to the updated movie path
-    axios.put(`http://localhost:9000/api/movies/${id}`, movie)
+    e.preventDefault()
+    axios.post(`http://localhost:9000/api/movies`, movie)
     .then(res => {setMovies(res.data)
-      navigate(`/movies/${id}`)
+    navigate('/movies')
     })
     .catch(err => console.log(err))
   }
@@ -63,7 +41,7 @@ const EditMovieForm = (props) => {
       <div className="modal-content">
         <form onSubmit={handleSubmit}>
           <div className="modal-header">
-            <h4 className="modal-title">Editing <strong>{movie.title}</strong></h4>
+            <h4 className="modal-title">Adding <strong>{movie.title}</strong></h4>
           </div>
           <div className="modal-body">
             <div className="form-group">
@@ -97,4 +75,4 @@ const EditMovieForm = (props) => {
     </div>);
 }
 
-export default EditMovieForm;
+export default AddMovieForm;

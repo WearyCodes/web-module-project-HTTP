@@ -11,6 +11,14 @@ const Movie = (props) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  const handleDeleteClick = () => {
+    axios.delete(`http://localhost:9000/api/movies/${id}`)
+    .then(res => {props.deleteMovie(id)
+    navigate('/movies')
+    })
+    .catch(err => console.log(err))
+  }
+
   useEffect(() => {
     axios.get(`http://localhost:9000/api/movies/${id}`)
       .then(res => {
@@ -52,7 +60,7 @@ const Movie = (props) => {
             <section>
               <span className="m-2 btn btn-dark">Favorite</span>
               <Link to={`/movies/edit/${movie.id}`} className="m-2 btn btn-success">Edit</Link>
-              <span className="delete"><input type="button" className="m-2 btn btn-danger" value="Delete" /></span>
+              <span onClick = {handleDeleteClick}className="delete"><input type="button" className="m-2 btn btn-danger" value="Delete" /></span>
             </section>
           </div>
         </div>

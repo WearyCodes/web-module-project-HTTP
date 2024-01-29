@@ -24,10 +24,10 @@ This project includes frontend and backend pieces that run locally on your compu
 
 Follow these steps to set up the app:
 
-- [ ] Create a forked copy of this project
-- [ ] Clone your own fork of the repository
-- [ ] Download dependencies by executing `npm install`
-- [ ] Run the app by executing `npm start`
+- [x] Create a forked copy of this project
+- [x] Clone your own fork of the repository
+- [x] Download dependencies by executing `npm install`
+- [x] Run the app by executing `npm start`
 
 You should now have your app running in Chrome on `http://localhost:3000`
 
@@ -37,13 +37,13 @@ You should now have your app running in Chrome on `http://localhost:3000`
 >
 > *Let's start by walking through the process of adding the routing, component and service calls need for resource updating*
 
-- [ ] Add the `Movie` component as the element to render in the route for the `movies/:id` path. This will fix the "View" button on the `movies` path.
+- [x] Add the `Movie` component as the element to render in the route for the `movies/:id` path. This will fix the "View" button on the `movies` path.
 
-- [ ] We need to be able to navigate to the edit movie component. In App.js, add in the `EditMovieForm`component to the supplied edit route.
+- [x] We need to be able to navigate to the edit movie component. In App.js, add in the `EditMovieForm`component to the supplied edit route.
 
-- [ ] Next, we need to grab the id being passed into the component through the url. Use the `useParams` hook to get the id value.
+- [x] Next, we need to grab the id being passed into the component through the url. Use the `useParams` hook to get the id value.
 
-- [ ] We need to be able to load in the current movie's attributes into our local form state. When `EditMovieForm` mount, retrieve our current id's movie from the api and save the data returned to local state.
+- [x] We need to be able to load in the current movie's attributes into our local form state. When `EditMovieForm` mount, retrieve our current id's movie from the api and save the data returned to local state.
 
 - [ ] At this point, nothing happens when the edit form is submitted. Add in the api call needed to update the server with our updated movie data.
 
